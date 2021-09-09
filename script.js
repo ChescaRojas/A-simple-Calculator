@@ -50,9 +50,9 @@ for(var i =0;i<operator.length;i++){
 			}
 			if(output!="" || history!=""){
 				output= output==""?output:reverseNumberFormat(output);
-				history= history[history.length-1] == "%"? history.replace("%", `*${output}`) + "/100" : history+output;
+				history= history+output;
 				if(this.id=="="){
-					var result=eval(history);
+					var result=eval(history.replace(/%/g,"*0.01*"));
 					printOutput(result);
 					printHistory("");
 				}
